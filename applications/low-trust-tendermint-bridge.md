@@ -8,19 +8,19 @@
 
 ## Overview
   
-We're [team](https://venlab.dev/) of founders and core devs of tokenless oracles & gateways protocol - [Gravity](https://gravity.tech/). The protocol itself is aiming to be a blockchain-agnostic solution. [Graviton](https://graviton.one/) - is an application on top of gravity network designed to increase user experience with wrapped tokens, gateways and bring an incentivisation for gateways oracles and AMM liquidity providers within integrated chains.
+We are a [team](https://venlab.dev/) of founders and core devs of tokenless oracle & gateway protocol - [Gravity](https://gravity.tech/), which aims to be a blockchain-agnostic solution. [Graviton](https://graviton.one/) is an application on top of Gravity network designed to improve user experience with wrapped tokens and gateways, providing a system of incentives for gateway oracles and AMM liquidity providers within integrated chains.
 
-Gravity is using [tendermint](https://tendermint.com/) as a framework for a tokenless internal ledger designed to be a message bus, events log distributed storage and consensus engine for oracle transactions (commit/reveal/aggregations and reputation changes).
+Gravity uses [tendermint](https://tendermint.com/) to build a tokenless internal ledger that works as a "message bus", event log distributed storage and consensus engine for oracle transactions (commit/reveal/aggregations and reputation changes).
 
-The team is looking for approaches to add an integration with polkadot/parity tech and expand/develop products within the polkadot ecosystem.
+The team is looking for approaches to add integration with polkadot/parity technology and expand/develop products within the polkadot ecosystem.
 
 ## Proposed Solution
 
-We propose the gateway solution illustrated in Figure (1) below:
+We propose a gateway solution illustrated in Figure (1) below:
 
 ![Tendermint <-> Substrate Bridge Schema](https://raw.githubusercontent.com/ventuary-lab/images/master/polkadot/Tendermint-Substrate-Bridge-long.png)
 
-Here we have 2 chains connected via [IBC protocol](https://docs.cosmos.network/v0.40/ibc/overview.html): 1. Custom Tendermint Chain and 2. Sovereign Substrate Chain (parachain slot candidate or parachain potentially). Tendermint chain has pBFT blockchain consensus via it's own validators nodes (V). Substrate Chain has PoA consensus or Polkadot consesus after winning of parachain slot (so we have: validators/collators - VC). Tendermint chain has special a module for Substrate bridge implemented in Go-Lang, while Substrate has two different approaches for bridge support implementation: 1 - [ink! smart contract](https://substrate.dev/docs/en/knowledgebase/smart-contracts/) or 2 - bridge module. We're going to add both implementations (designed for different potential use cases).
+As seen on the Figure, two chains are connected via [IBC protocol](https://docs.cosmos.network/v0.40/ibc/overview.html): 1. Custom Tendermint Chain and 2. Sovereign Substrate Chain (parachain or a slot candidate). Tendermint chain provides pBFT blockchain consensus via its own validator nodes (V). Substrate Chain has PoA consensus or Polkadot consensus (after gaining a parachain slot) (which means that there are validators/collators - VC). Tendermint chain has a special module for Substrate bridge implemented in Go Lang, while Substrate provides two different approaches for bridge support implementation: 1 - [ink! smart contract](https://substrate.dev/docs/en/knowledgebase/smart-contracts/) or 2 - a bridge module. We are planning to add both implementations (designed for different potential use cases).
 
 ## Demo Usecase for the bridge
 
@@ -28,23 +28,23 @@ An implementation of four transactions which are basic components of a crosschai
 
 I. <b>Tendermint Chain</b> (called by any <b>user</b>): <span style="color:blue"> Deposit-Event-TX: </span> {TOKEN-INFO: "example-token-id", AMOUNT: 100, RECEIVER: "receiver's public address", SENDER: "sender's public adress"}
 
-II. <b>Substrate Chain</b> (called by bridge <b>provider</b>): <span style="color:purple"> Echo-Deposit-Event-TX: </span> {..._same data spec_...}
+II. <b>Substrate Chain</b> (called by a bridge <b>provider</b>): <span style="color:purple"> Echo-Deposit-Event-TX: </span> {..._same data spec_...}
 
 III. <b>Substrate Chain</b> (called by any <b>user</b>): <span style="color:purple"> Deposit-Event-TX: </span> {..._same data spec_...}
 
-IV. <b>Tendermint Chain</b> (called by bridge <b>provider</b>): <span style="color:blue"> Echo-Deposit-Event-TX: </span> {..._same data spec_...}
+IV. <b>Tendermint Chain</b> (called by a bridge <b>provider</b>): <span style="color:blue"> Echo-Deposit-Event-TX: </span> {..._same data spec_...}
 
 
 
 
-## Reason for an application and an ecosystem fit
-There are many existing tendermint based [chains](https://cosmos.network/ecosystem) are already in production. To scale their potential within the polkadot ecosystem and to bring more integrations and products from already established teams we have to use [Low-Trust Tendermint-Supstrate/Polka Bridges](https://feedback.parity.io/b/substrate-feedback-board/low-trust-tendermint-bridge/).
+## Reason for the application and the ecosystem fit
+There are many existing tendermint-based [chains](https://cosmos.network/ecosystem) already in production. To scale their applicability within the polkadot ecosystem and to bring more integrations and products from already established teams, we can use [Low-Trust Tendermint-Supstrate/Polka Bridges](https://feedback.parity.io/b/substrate-feedback-board/low-trust-tendermint-bridge/).
 
-This is also the most popular issue in [Feedback Parity Portal](https://feedback.parity.io/b/substrate-feedback-board/low-trust-tendermint-bridge/) at the moment.
+This is also the most popular issue on the [Feedback Parity Portal](https://feedback.parity.io/b/substrate-feedback-board/low-trust-tendermint-bridge/) at the moment.
 
-Our open-sourced implementation of a Tendermint bridge will be used by our [gravity](https://gravity.tech/) team and another [teams](https://cosmos.network/ecosystem) teams who has an infrastructure on Tendermint and Cosmos-SDK.
+Our open-sourced implementation of the Tendermint bridge will be used by ourselves for [Gravity](https://gravity.tech/) and other [teams](https://cosmos.network/ecosystem) teams who use infrastructure on Tendermint and Cosmos-SDK.
 
-We believe in "cooperation over competition" principle and we're going to make a first move in that direction.
+We believe in "cooperation over competition" principle and we are aiming to make a first move in that direction.
 
 ## Team members
 
